@@ -11,6 +11,7 @@ function App() {
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(false);
   const [, setError] = useState('');
+  const [selectedSale, setSelectedSale] = useState(null);
 
   // Login handler
   const handleLogin = (credentials) => {
@@ -28,6 +29,7 @@ function App() {
 
   // Handler untuk edit data - pass ke SalesForm
   const handleEditClick = (sale) => {
+    setSelectedSale(sale);
     // Scroll ke form saat edit
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -71,7 +73,8 @@ function App() {
                       loading={loading}
                       setLoading={setLoading}
                       setError={setError}
-                      onEdit={handleEditFromList}
+                      selectedSale={selectedSale}
+                      onEditComplete={() => setSelectedSale(null)}
                     />
                     <SalesList 
                       sales={sales}

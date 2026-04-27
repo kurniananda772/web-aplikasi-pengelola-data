@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SalesCalculator from '../services/SalesCalculator';
 
-const SalesForm = ({ sales, setSales, loading, setLoading, setError, onEdit }) => {
+const SalesForm = ({ sales, setSales, loading, setLoading, setError, selectedSale, onEditComplete }) => {
   const [formData, setFormData] = useState({
     id: '',
     namaProduk: '',
@@ -19,19 +19,19 @@ const SalesForm = ({ sales, setSales, loading, setLoading, setError, onEdit }) =
 
   // Listen untuk edit dari parent component
   useEffect(() => {
-    if (onEdit && typeof onEdit === 'object' && onEdit.id) {
+    if (selectedSale && typeof selectedSale === 'object' && selectedSale.id) {
       setFormData({
-        id: onEdit.id || '',
-        namaProduk: onEdit.namaProduk || '',
-        namaPelanggan: onEdit.namaPelanggan || '',
-        hargaSatuan: onEdit.hargaSatuan || '',
-        jumlah: onEdit.jumlah || '',
-        diskonPersen: onEdit.diskonPersen || '',
-        tanggal: onEdit.tanggal || new Date().toISOString().split('T')[0]
+        id: selectedSale.id || '',
+        namaProduk: selectedSale.namaProduk || '',
+        namaPelanggan: selectedSale.namaPelanggan || '',
+        hargaSatuan: selectedSale.hargaSatuan || '',
+        jumlah: selectedSale.jumlah || '',
+        diskonPersen: selectedSale.diskonPersen || '',
+        tanggal: selectedSale.tanggal || new Date().toISOString().split('T')[0]
       });
       setIsEdit(true);
     }
-  }, [onEdit]);
+  }, [selectedSale]);
 
   // Fetch data eksternal dari JSONPlaceholder
   const fetchExternalData = async () => {
@@ -79,6 +79,7 @@ const SalesForm = ({ sales, setSales, loading, setLoading, setError, onEdit }) =
         s.id === formData.id ? salesData : s
       ));
       setIsEdit(false);
+      onEditComplete && onEditComplete();
     } else {
       // Create
       salesData.id = Date.now();
@@ -107,6 +108,7 @@ const SalesForm = ({ sales, setSales, loading, setLoading, setError, onEdit }) =
       diskonPersen: '',
       tanggal: new Date().toISOString().split('T')[0]
     });
+    onEditComplete && onEditComplete();
   };
 
   return (
