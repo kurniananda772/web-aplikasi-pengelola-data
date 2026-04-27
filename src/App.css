@@ -293,6 +293,7 @@ label {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
   animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
 }
 
@@ -304,19 +305,60 @@ label {
 .table th {
   color: white;
   font-weight: 600;
-  padding: 18px 16px;
+  padding: 18px 12px;
   text-align: left;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   animation: fadeIn 0.5s ease-out;
+  vertical-align: middle;
+  word-wrap: break-word;
 }
 
 .table td {
-  padding: 16px 16px;
+  padding: 16px 12px;
   border-bottom: 1px solid #f1f3f4;
   color: #495057;
   animation: slideUp 0.5s ease-out;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+/* Kolom Width */
+.table th:nth-child(1), .table td:nth-child(1) { width: 15%; text-align: left; } /* Produk */
+.table th:nth-child(2), .table td:nth-child(2) { width: 15%; text-align: left; } /* Pelanggan */
+.table th:nth-child(3), .table td:nth-child(3) { width: 18%; text-align: right; } /* Harga */
+.table th:nth-child(4), .table td:nth-child(4) { width: 12%; text-align: center; } /* Jumlah */
+.table th:nth-child(5), .table td:nth-child(5) { width: 18%; text-align: right; } /* Total */
+.table th:nth-child(6), .table td:nth-child(6) { width: 22%; }
+
+/* Action Buttons */
+.table td:nth-child(6) {
+  padding: 16px 12px !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table td:nth-child(6) .flex {
+  display: flex !important;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.table td:nth-child(6) button {
+  white-space: nowrap;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
 }
 
 .table tbody tr {
@@ -856,4 +898,18 @@ label {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+/* Memaksa semua sel tabel rata kiri agar sejajar dengan Header */
+.table th, 
+.table td {
+  text-align: left !important;
+  padding-left: 16px; /* Pastikan padding kiri sama */
+}
+
+/* Jika ada angka yang masih bergeser ke kanan, reset margin-nya */
+.table td span, 
+.table td strong {
+  display: inline-block;
+  text-align: left;
+  width: 100%;
 }

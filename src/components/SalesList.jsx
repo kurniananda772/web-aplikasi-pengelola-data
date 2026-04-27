@@ -28,27 +28,27 @@ const SalesList = ({ sales, setSales, loading, setError, onEdit }) => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th className="px-6 py-4 text-left">Produk</th>
-              <th className="px-6 py-4 text-left">Pelanggan</th>
-              <th className="px-6 py-4 text-right">Harga</th>
-              <th className="px-6 py-4 text-center">Jumlah</th>
-              <th className="px-6 py-4 text-right">Total</th>
-              <th className="px-6 py-4 text-center">Aksi</th>
+              <th>Produk</th>
+              <th>Pelanggan</th>
+              <th>Harga</th>
+              <th>Jumlah</th>
+              <th>Total</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
             {sales.map((sale) => (
-              <tr key={sale.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4 font-medium">{sale.namaProduk}</td>
-                <td className="px-6 py-4">{sale.namaPelanggan}</td>
-                <td className="px-6 py-4 text-right">
+              <tr key={sale.id}>
+                <td className="font-medium">{sale.namaProduk}</td>
+                <td>{sale.namaPelanggan}</td>
+                <td>
                   {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(sale.hargaSatuan || 0)}
                 </td>
-                <td className="px-6 py-4 text-center">{sale.jumlah || 0}</td>
-                <td className="px-6 py-4 text-right font-bold text-green-600">
+                <td>{sale.jumlah || 0}</td>
+                <td className="font-bold text-green-600">
                   {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(sale.totalPenjualan || 0)}
                 </td>
-                <td className="px-6 py-4 text-center">
+                <td>
                   <div className="flex gap-2 justify-center">
                     <button
                       onClick={() => onEdit(sale)}
