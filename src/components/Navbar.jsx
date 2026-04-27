@@ -16,7 +16,7 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
     <nav className="navbar px-6 py-4">
       <div className="flex justify-between items-center">
         <Link to="/dashboard" className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-          � Data Penjualan
+          Data Penjualan
         </Link>
         
         <div className="flex items-center space-x-4">
