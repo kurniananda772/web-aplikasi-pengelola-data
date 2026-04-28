@@ -52,13 +52,11 @@ const SalesList = ({ sales, setSales, loading, setError, onEdit }) => {
                   <div className="flex gap-2 justify-center">
                     <button
                       onClick={() => onEdit(sale)}
-                      className="text-blue-500 hover:text-blue-700 transition-colors"
                     >
                       ✏️ Edit
                     </button>
                     <button
                       onClick={() => handleDelete(sale.id)}
-                      className="text-red-500 hover:text-red-700 transition-colors"
                     >
                       🗑️ Hapus
                     </button>

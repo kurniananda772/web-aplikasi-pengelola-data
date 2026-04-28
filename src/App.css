@@ -350,15 +350,39 @@ label {
 
 .table td:nth-child(6) button {
   white-space: nowrap;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   border: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.table td:nth-child(6) button:first-child {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.table td:nth-child(6) button:first-child:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
+}
+
+.table td:nth-child(6) button:last-child {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.table td:nth-child(6) button:last-child:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.5);
 }
 
 .table tbody tr {
