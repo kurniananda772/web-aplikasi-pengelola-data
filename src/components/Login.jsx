@@ -65,9 +65,14 @@ const Login = ({ onLogin }) => {
             />
           </div>
 
-          <button type="submit" className="login-submit">
-            Masuk ke Sistem
-          </button>
+          <div className="login-actions">
+            <button type="submit" className="login-submit">
+              Login
+            </button>
+            <button type="button" className="login-register">
+              Register
+            </button>
+          </div>
         </form>
 
         <div className="login-footer">
